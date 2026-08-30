@@ -3,7 +3,7 @@
 
 ## What is regression?
 
-Regression analysis is a form of predictive modelling technique which investigates the relationship between a dependent (target) and independent variable (s) (predictor). In simple terms the regression can be defined as, “Using the relationship between variables to find the best fit line or the regression equation that can be used to make predictions."
+Regression analysis is a form of predictive modelling technique which investigates the relationship between a dependent (target) and independent variable (s) (predictor). In simple terms the regression can be defined as, "Using the relationship between variables to find the best fit line or the regression equation that can be used to make predictions."
 
 This technique is commonly used for forecasting, time series modeling, and identifying causal relationships between variables. Several regression techniques are available to make predictions, and these techniques are primarily influenced by three factors: the number of independent variables, the type of dependent variable, and the shape of the regression line.
 
@@ -21,14 +21,14 @@ This project implements and compares regression algorithms to predict housing pr
 - Decision Trees
 - Random Forests
 
-These models are evaluated using metrics like Mean Squared Error (MSE) and R² to assess performance and accuracy. Data preprocessing steps such as handling missing values, feature scaling, and splitting datasets ensure the models are trained and tested optimally.
+These models are evaluated using metrics like Mean Squared Error (MSE) and R2 to assess performance and accuracy. Data preprocessing steps such as handling missing values, feature scaling, and splitting datasets ensure the models are trained and tested optimally.
 
 
 ## 1. Simple Linear Regression
 
 The goal of a linear regression model is to establish a relationship between one or more independent variables (features) and a continuous dependent variable (target). When there is only one independent variable, it is referred to as Univariate Linear Regression, whereas the presence of multiple independent variables is known as Multiple Linear Regression.
 
-<p align="center" style="font-size: 18px;"> General equation: y = w₀ + w₁⋅x₁</p>
+<p align="center" style="font-size: 18px;"> General equation: y = w0 + w1 * x1</p>
 
 
 
@@ -46,9 +46,7 @@ Multiple linear regression is used to estimate the relationship between two or m
 
 ## 3. Polynomial Regression
 
-Polynomial Regression is an extension of Linear Regression that models the relationship between the dependent and independent variables as an 
-𝑛
-n-degree polynomial. It is useful when the data exhibits a non-linear relationship that cannot be captured by a straight line.
+Polynomial Regression is an extension of Linear Regression that models the relationship between the dependent and independent variables as an n-degree polynomial. It is useful when the data exhibits a non-linear relationship that cannot be captured by a straight line.
 
 Unlike simple linear regression, which assumes a linear relationship between the variables, polynomial regression fits a curvilinear equation.
 
@@ -69,12 +67,12 @@ In a Decision Tree:
 <p align="center">Figure 4: Decision Tree Regression Model</p>
 
 
-## 5. Random Forrest Regression
+## 5. Random Forest Regression
 Random Forest is an ensemble learning algorithm used for classification and regression tasks. It operates by constructing multiple decision trees during training and combines their outputs (majority vote for classification or average for regression) to produce a more accurate and robust prediction. By aggregating the results of many decision trees, Random Forest reduces the risk of overfitting and increases the model's generalization ability.
 
 
 ![Random_Forrest_Regression](/images/random_forrest.png)
-<p align="center">Figure 5: Random Forrest Regression Model</p>
+<p align="center">Figure 5: Random Forest Regression Model</p>
 
 
 ## Model evaluation
@@ -84,11 +82,11 @@ There are three main errors (metrics) used to evaluate regression models, Mean a
 
 - 0 indicates a perfect fit.
 
-**Root Mean Square Error (RMSE)** indicates the average error in units of y, the predicted feature, but penalizes larger errors more severely than MAE. 
+**Mean Squared Error (MSE)** is the average of the squared errors, so it penalizes large errors far more severely than MAE.
 
 - A value of 0 indicates a perfect fit.
 
-**R-squared (R2 )** tells us the degree to which the model explains the variance in the data. In other words how much better it is than just predicting the mean.
+**R-squared (R2 )** tells us the degree to which the model explains the variance in the data. In other words how much better it is than just predicting the mean.
 
 - 1: Perfect fit.
 - 0: Model explains no variance.
@@ -97,16 +95,18 @@ There are three main errors (metrics) used to evaluate regression models, Mean a
 
 ## Model results
 ### Comparative Performance
-| Model                     | Mean Absolute Error (MAE) | Mean Squared Error (MSE) | R² Score  |
+| Model                     | Mean Absolute Error (MAE) | Mean Squared Error (MSE) | R2 Score  |
 |---------------------------|---------------------------|---------------------------|----------|
 | Simple Linear Regression  | 0.26                      | 0.12                      | 0.37     |
-| Multiple Linear Regression| 0.14                      | 0.4                       | 0.80     |
+| Multiple Linear Regression| 0.14                      | 0.04                      | 0.80     |
 | Polynomial Regression     | 0.26                      | 0.12                      | 0.38     |
 | Decision Tree Regression  | 0.16                      | 0.05                      | 0.74     |
 | Random Forest Regression  | 0.13                      | 0.03                      | 0.82     |
 
+Every figure above is the printed output of the matching notebook in `models/`, measured on the 20 percent test split with `random_state=42` under scikit-learn 1.9.0.
+
 ### **Observations**
-The regression model comparison above shows that Random Forest Regression stands out with an R² Score of 0.82, thereby offering the highest predictive accuracy. Multiple Linear Regression also performs well, reinforcing that model's adept at handling various predictors and complex interactions excel with this type of data. In contrast, Simple Linear Regression and Polynomial Regression struggle with lower R² scores around 0.37, underscoring their limitations for complex datasets. Decision Tree Regression strikes a practical balance, combining effectiveness with model clarity. 
+The regression model comparison above shows that Random Forest Regression stands out with an R2 Score of 0.82, thereby offering the highest predictive accuracy. Multiple Linear Regression also performs well, reinforcing that model's adept at handling various predictors and complex interactions excel with this type of data. In contrast, Simple Linear Regression and Polynomial Regression struggle with lower R2 scores around 0.37, underscoring their limitations for complex datasets. Decision Tree Regression strikes a practical balance, combining effectiveness with model clarity. 
 
 ## Quick Start Guide
 
@@ -126,10 +126,10 @@ To run the scripts on your local machine, ensure you have Python installed. Foll
 #### 1. Clone the Repository
 Clone the repository to your local machine using the following command:
 ```bash
-git clone https://github.com/danielcoblentz/Predicting-with-Regression-Algorithms
+git clone https://github.com/danielcoblentz/housing-price-regression
 ```
 #### 2. Activate the virtual environment
-You will need to activate the virtual environment. Note: you must also convert the files from .ipynb to .py as the .ipynb format is only compatible with Jupyter notebook interfaces unless a Jupyter notebook extension is installed.
+You will need to activate the virtual environment.
 
 ```
 Windows: .venv\Scripts\Activate
@@ -138,9 +138,9 @@ Mac: source .venv/bin/activate
 
 
 ### Execution
-After activating the environment and converting the file type, navigate to the correct folder location and run the script directly in your code editor or terminal:
+After activating the environment, open the notebooks and run them top to bottom:
 ```
-python your_script_name.py
+jupyter notebook models/
 ```
 ## References
 
